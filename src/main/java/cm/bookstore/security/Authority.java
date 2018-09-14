@@ -11,13 +11,12 @@ public class Authority implements GrantedAuthority, Serializable{
 	private final String authority;
 	
 	public Authority(String authority) {
-		super();
 		this.authority = authority;
 	}
 
 	@Override
 	public String getAuthority() {
-		return null;
+		return authority;
 	}
 
 }

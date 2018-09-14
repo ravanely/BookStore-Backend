@@ -1,12 +1,14 @@
 package cm.bookstore.dao;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+
+import org.springframework.data.repository.CrudRepository;
 
 import cm.bookstore.entities.User;
 
-public interface UserRepository extends JpaRepository<User, Long>{
+public interface UserRepository extends CrudRepository<User, Long>{
 
 	User findByUsername(String username);
 	User findByEmail(String email);
-	//List<User> findAll();
+	List<User> findAll();
 }

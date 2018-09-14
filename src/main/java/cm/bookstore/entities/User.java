@@ -29,7 +29,7 @@ public class User implements UserDetails, Serializable{
 	
 	@Id 
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="id", nullable=false, updatable=false)
+	@Column(name="Id", nullable=false, updatable=false)
 	private Long userId;
 	
 	private String username;
@@ -57,12 +57,10 @@ public class User implements UserDetails, Serializable{
 		return authorities;
 	}
 
-	@Override
 	public String getPassword() {
 		return this.password;
 	}
 
-	@Override
 	public String getUsername() {
 		return this.username;
 	}

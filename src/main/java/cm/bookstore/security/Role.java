@@ -7,12 +7,16 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
 public class Role implements Serializable{
 
-	private Long roleId;
+	private static final long serialVersionUID = 850245264L;
+	
+	@Id
+	private int roleId;
 	private String name;
 	
 	@OneToMany(mappedBy="role", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
@@ -21,11 +25,11 @@ public class Role implements Serializable{
 	public Role() {
 	}
 
-	public Long getRoleId() {
+	public int getRoleId() {
 		return roleId;
 	}
 
-	public void setRoleId(Long roleId) {
+	public void setRoleId(int roleId) {
 		this.roleId = roleId;
 	}
 
