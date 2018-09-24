@@ -4,13 +4,17 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.Iterator;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -58,5 +62,21 @@ public class BookResource {
 			return new ResponseEntity("Upload failed!", HttpStatus.BAD_REQUEST);
 		}
 	}
-
+	
+	@RequestMapping("/bookList")
+	public List<Book> getBookList(){
+		return bookService.findAll();
+	}
+	
+	@RequestMapping("/{id}")
+	public Book getBook(@PathVariable Long id) {
+		Book book = bookService.findOne(id);
+		return book;
+	}
+	
+	@PutMapping("/update")
+	public Book updateBook(@RequestBody Book book) {
+		return bookService.save(book);
+	}
 }
+
